@@ -69,6 +69,7 @@ docker-compose up --build
 ## Estructura del Proyecto
 ```
 FinBridge/
+FinBridge/
 ├─ cobol/
 │  ├─ data/
 │  │  ├─ USUARIOS.DAT
@@ -80,11 +81,20 @@ FinBridge/
 ├─ java/
 │  ├─ src/
 │  │  ├─ main/java/com/finbridge/
-│  │  │  ├─ security/    # Filtro de login y JWT
+│  │  │  ├─ security/    # Filtro login, JWT
 │  │  │  ├─ controllers/ # API REST
-│  │  │  └─ services/    # Llamadas a COBOL
-│  │  └─ main/resources/templates # Vistas Thymeleaf
+│  │  │  ├─ services/    # Invocaciones COBOL
+│  │  └─ main/resources/static/  # se despliega web/dist
 │  └─ pom.xml
+├─ web/
+│  ├─ src/
+│  │  ├─ index.html
+│  │  └─ styles/
+│  │      └─ input.css
+│  ├─ tailwind.config.js
+│  ├─ postcss.config.js
+│  ├─ package.json
+│  └─ dist/             # artefacto tras npm run build
 ├─ docker-compose.yml
 └─ README.md
 ```
