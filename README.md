@@ -1,6 +1,6 @@
 # Hybrid COBOL & Java Banking System
 
-proyecto de demostración que integra programas COBOL legacy con un backend Java moderno y un frontend web, simulando la autenticación Bancaria y la consulta de saldos y movimientos.
+Proyecto de demostración que integra programas COBOL legacy con un backend Java moderno y un frontend web construido con Tailwind CSS, simulando la autenticación bancaria y la consulta de saldos y movimientos usando bases de datos en lugar de archivos planos.
 
 ## Tabla de Contenidos
 
@@ -14,17 +14,20 @@ proyecto de demostración que integra programas COBOL legacy con un backend Java
 
 ## Características
 
-- Autenticación COBOL: módulo `login.cbl` valida usuario y contraseña (hash SHA‑256) en un archivo secuencial `USUARIOS.DAT`.
+- Autenticación COBOL con DB: módulo `login.cbl` valida usuario y contraseña (hash SHA-256) en la tabla `USUARIOS` de una base de datos relacional.
 - Servicios REST en Java: Spring Boot expone endpoints seguros `(/api/login, /api/accounts, /api/transactions)` e invoca programas COBOL vía `ProcessBuilder`.
-- Frontend Web: UI ligera con Thymeleaf (o React opcional) que permite iniciar sesión, consultar saldo y ver movimientos.
-- Docker & Docker Compose: entornos COBOL y Java completamente contenerizados para facilitar despliegue y pruebas.
-- CI/CD: ejemplos de GitHub Actions para compilar COBOL, ejecutar tests y arrancar el servicio Java.
+- Frontend Web con Tailwind: interfaz responsiva y moderna, separada en web/ con Node.js y PostCSS.
+- Base de datos relacional: PostgreSQL (o DB2/Oracle) para almacenar usuarios, cuentas y transacciones.
+- Docker & Docker Compose: orquesta contenedores de COBOL, Java, frontend y base de datos.
+- CI/CD: GitHub Actions para compilar COBOL, construir frontend, ejecutar tests y desplegar servicios.
 
 ## Requisitos Previos
 
 - Java 17+ y Maven 3.6+
 - GnuCOBOL (version 3.1 o superior)
 - Docker y Docker Compose
+- Node.js 14+ y npm/yarn
+- PostgreSQL (o DB2/Oracle) accesible desde la red
 - Sistema operativo Linux, macOS o Windows con soporte POSIX
 
 ## Instalación
@@ -34,11 +37,18 @@ proyecto de demostración que integra programas COBOL legacy con un backend Java
 git clone https://github.com/tu-usuario/FinBridge.git
 cd FinBridge
 ```
-2. Prepara los archivos de usuarios y cuentas de ejemplo en `cobol/data`:
-- `USUARIOS.DAT`: registros con usuario y hash SHA‑256 de la contraseña.
-- `CUENTAS.DAT`: registros de número de cuenta, usuario y saldo.
+2. Configura la base de datos:
+- Crea una BD finbridge y un usuario con privilegios.
+- Ejecuta el script SQL en db/init.sql para crear tablas USUARIOS, CUENTAS y TRANSACCIONES.
 
 3. Configura variables de entorno si es necesario (puedes usar .env).
+
+4. Ajusta variables de entorno en .env:
+```bash
+DB_URL=jdbc:postgresql://db:5432/finbridge
+DB_USER=fin_usr
+DB_PASS=fin_pass
+```
 
 ## Compilación y Ejecución
 
