@@ -4,16 +4,13 @@ proyecto de demostración que integra programas COBOL legacy con un backend Java
 
 ## Tabla de Contenidos
 
-## Características
-- Arquitectura
-- Requisitos Previos
-- Instalación
-- Compilación y Ejecución
-- Uso
-- Estructura del Proyecto
-- Tecnologías Utilizadas
-- Contribuciones
-- Licencia
+- [Características](#características)
+- [Requisitos Previos](#requisitos-previos)
+- [Instalación](#instalación)
+- [Compilación y Ejecución](#compilación-y-ejecución)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Tecnologías Utilizadas](#tecnologías-utilizadas)
+- [Contribuciones](#contributions)
 
 ## Características
 
